@@ -2,10 +2,24 @@ import { useState, useEffect } from 'react';
 import Icon from '@/components/ui/icon';
 import { Button } from '@/components/ui/button';
 
-const HERO = 'https://cdn.poehali.dev/projects/ada1da4d-277b-4f6e-9d53-af236ecc5a03/files/9e0ff660-7478-479c-8e23-2fcf53c827ca.jpg';
-const PORTRAIT = 'https://cdn.poehali.dev/projects/ada1da4d-277b-4f6e-9d53-af236ecc5a03/files/538d6682-6ed3-4fe5-a8b0-059aded455bc.jpg';
-const IMG1 = 'https://cdn.poehali.dev/projects/ada1da4d-277b-4f6e-9d53-af236ecc5a03/files/112ef1d7-c792-4a8a-ae8d-d985b62926ac.jpg';
-const IMG2 = 'https://cdn.poehali.dev/projects/ada1da4d-277b-4f6e-9d53-af236ecc5a03/files/57581168-13c4-4de0-b1e7-39b77398e92b.jpg';
+const CDN = 'https://cdn.poehali.dev/projects/ada1da4d-277b-4f6e-9d53-af236ecc5a03/bucket/ignat';
+const PH = {
+  p1: `${CDN}/1.jpg`,
+  p2: `${CDN}/2.jpg`,
+  p3: `${CDN}/3.JPG`,
+  p4: `${CDN}/4.JPG`,
+  p5: `${CDN}/5.JPG`,
+  p6: `${CDN}/6.jpeg`,
+  p7: `${CDN}/7.jpeg`,
+  p8: `${CDN}/8.jpeg`,
+  p9: `${CDN}/9.jpeg`,
+  p10: `${CDN}/10.jpg`,
+};
+
+const HERO = PH.p1;
+const PORTRAIT = PH.p2;
+const IMG1 = PH.p3;
+const IMG2 = PH.p4;
 
 const NAV = [
   { id: 'home', label: 'Главная' },
@@ -18,12 +32,15 @@ const NAV = [
 ];
 
 const GALLERY = [
-  { src: HERO, title: 'Ночь в отражениях', cat: 'Город' },
-  { src: IMG1, title: 'Лица улиц', cat: 'Портрет' },
-  { src: IMG2, title: 'Туман и фонари', cat: 'Атмосфера' },
-  { src: PORTRAIT, title: 'Автопортрет', cat: 'Студия' },
-  { src: IMG2, title: 'Дождливый перекрёсток', cat: 'Город' },
-  { src: IMG1, title: 'Морщины времени', cat: 'Портрет' },
+  { src: PH.p1, title: 'Кадр первый', cat: 'Улица' },
+  { src: PH.p3, title: 'Лица улиц', cat: 'Портрет' },
+  { src: PH.p4, title: 'Свет и тень', cat: 'Атмосфера' },
+  { src: PH.p5, title: 'Городской ритм', cat: 'Улица' },
+  { src: PH.p6, title: 'Мгновение', cat: 'Момент' },
+  { src: PH.p7, title: 'Тихая сцена', cat: 'Атмосфера' },
+  { src: PH.p8, title: 'Прохожий', cat: 'Портрет' },
+  { src: PH.p9, title: 'Перекрёсток', cat: 'Улица' },
+  { src: PH.p10, title: 'Финальный кадр', cat: 'Момент' },
 ];
 
 const SERVICES = [
@@ -34,15 +51,15 @@ const SERVICES = [
 ];
 
 const REVIEWS = [
-  { name: 'Анна Кравцова', role: 'Портретная сессия', text: 'Игнат поймал меня настоящую — без позы, без фальши. Эти кадры теперь висят у меня дома в рамах. Магия и профессионализм.', work: IMG1 },
-  { name: 'Дмитрий Орлов', role: 'Street-прогулка', text: 'Прошли по старому центру за два часа — получил серию, которая выглядит как кадры из артхаусного фильма. Восторг.', work: HERO },
-  { name: 'Марина Лебедева', role: 'Репортаж свадьбы', text: 'Снимал нашу свадьбу так, что мы даже не замечали камеру. А потом увидели фото — и заплакали от эмоций. Спасибо!', work: IMG2 },
+  { name: 'Анна Кравцова', role: 'Портретная сессия', text: 'Игнат поймал меня настоящую — без позы, без фальши. Эти кадры теперь висят у меня дома в рамах. Магия и профессионализм.', work: PH.p6 },
+  { name: 'Дмитрий Орлов', role: 'Street-прогулка', text: 'Прошли по старому центру за два часа — получил серию, которая выглядит как кадры из артхаусного фильма. Восторг.', work: PH.p7 },
+  { name: 'Марина Лебедева', role: 'Репортаж свадьбы', text: 'Снимал нашу свадьбу так, что мы даже не замечали камеру. А потом увидели фото — и заплакали от эмоций. Спасибо!', work: PH.p8 },
 ];
 
 const BLOG = [
-  { date: '12 июня 2026', title: 'Как ловить момент: 5 принципов уличной съёмки', tag: 'Гайд', img: HERO },
-  { date: '28 мая 2026', title: 'Свет ночного города: работа с неоном и тенями', tag: 'Техника', img: IMG2 },
-  { date: '14 мая 2026', title: 'Истории улиц: как незнакомцы становятся героями кадра', tag: 'Эссе', img: IMG1 },
+  { date: '12 июня 2026', title: 'Как ловить момент: 5 принципов уличной съёмки', tag: 'Гайд', img: PH.p9 },
+  { date: '28 мая 2026', title: 'Свет ночного города: работа с неоном и тенями', tag: 'Техника', img: PH.p10 },
+  { date: '14 мая 2026', title: 'Истории улиц: как незнакомцы становятся героями кадра', tag: 'Эссе', img: PH.p5 },
 ];
 
 const Index = () => {
